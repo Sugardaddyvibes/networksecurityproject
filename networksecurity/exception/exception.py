@@ -16,8 +16,6 @@ class NetworkSecurityExecption(Exception):
        
 if __name__ == "__main__":
     try:
-        logger.info('try the try block')
         a=1/0
-        print("thsi will not be printed",a)
     except Exception as e:
         raise NetworkSecurityExecption(e, sys)

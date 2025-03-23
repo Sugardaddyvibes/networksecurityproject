@@ -2,4 +2,8 @@ python-dotenv
 pandas
 numpy
 pymango
--e .
+pymongo[srv]
+pymongo
+certifi
+scikit-learn
+##git -e .
