@@ -13,9 +13,10 @@ from networksecurity.constant import training_pipeline
 from networksecurity.logging.logger import logger
 from networksecurity.entity.config_enitity import DataIngestionConfig,TrainingPipelineConfig
 from networksecurity.constant import training_pipeline 
-from networksecurity.entity.artifacts_entity import DataIngestionArtiacts
+from networksecurity.entity.artifact_entity import DataIngestionArtiacts 
 
 load_dotenv()
+
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 print(MONGO_DB_URL)
 
@@ -30,7 +31,7 @@ class  DataIngestion:
         try:
             database_name=self.data_ingestation_config.database_name
             collection_name=self.data_ingestation_config.collection_name
-            self.mongo_client=MongoClient(MONGO_DB_URL,serverSelectionTimeoutMS=60000,socketTimeoutMS=60000,connectTimeoutMS=60000)
+            self.mongo_client=MongoClient(MONGO_DB_URL)
             collection= self.mongo_client[database_name][collection_name]
             
             df=pd.DataFrame(list(collection.find()))
@@ -70,10 +71,10 @@ class  DataIngestion:
             dataframe=self.import_collection_as_dataframe()
             dataframe=self.export_data_into_feature_store(dataframe) 
             self.train_test_split_data(dataframe)
-            dataIngestionartiacts=DataIngestionArtiacts(
+            dataingestionartiacts=DataIngestionArtiacts(
                 trained_file_path=self.data_ingestation_config.training_file_path,
                 test_file_path=self.data_ingestation_config.testing_file_path)   
-            return dataIngestionartiacts
+            return dataingestionartiacts
 
 
         except Exception as e:
