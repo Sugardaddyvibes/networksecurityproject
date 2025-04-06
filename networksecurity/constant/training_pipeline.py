@@ -10,7 +10,7 @@ PIPELINE_NAME:str="NetworkSecurity"
 TRAIN_FILE_NAME:str="train.csv"
 TEST_FILE_NAME:str="test.csv"
 RAW_FILE:str="raw.csv"
-
+PREPROCESSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 SCHEMA_FILE_PATH= os.path.join("data_schema","schema.yaml")
 
 
@@ -34,5 +34,19 @@ DATA_VALIDATION_INVALID_DIR:str='invalid'
 DATA_VALIDATION_DRIFT_REPORT_DIR:str='drift_report'
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME:str="report.yaml"
 
+""""
+Data transformation   realated constant start with DATA TRANSFROMATION VAR NAME"
+"""""
+DATA_TRANSFORMATION__DIR_NAME:str="data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR:str="data_transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR:str='tranformed_object'
+DATA_TRANSFORMATION_TRAIN_FILE_PATH:str='tran.npy'
+DATA_TRANSFORMATION_TEST_FILE_PATH:str='test.npy'
+## kkn imputer to replace nan values
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "missing_values": np.nan,
+    "n_neighbors": 3,
+    "weights": "uniform",
+}
 
 

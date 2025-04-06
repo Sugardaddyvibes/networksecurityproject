@@ -31,7 +31,7 @@ class  DataIngestion:
         try:
             database_name=self.data_ingestation_config.database_name
             collection_name=self.data_ingestation_config.collection_name
-            self.mongo_client=MongoClient(MONGO_DB_URL)
+            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
             collection= self.mongo_client[database_name][collection_name]
             
             df=pd.DataFrame(list(collection.find()))

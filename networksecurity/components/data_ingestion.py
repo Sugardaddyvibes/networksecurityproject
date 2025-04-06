@@ -32,8 +32,7 @@ print(MONGO_DB_URL)
 class  DataIngestion:
     def __init__(self):
         try:
-            self.client= MongoClient(
-              MONGO_DB_URL)
+            self.client= MongoClient(MONGO_DB_URL)
             print("✅ MongoDB Connection Successful!")
             self.database = self.client[training_pipeline.DATA_INGESTION_DATABASE_NAME]
             self.collection = self.database[training_pipeline.DATA_INGESTION_COLLECTION_NAME]
