@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from networksecurity.exception.exception  import NetworkSecurityExecption
 from networksecurity.logging.logger import logger   
 from dotenv import load_dotenv
-import pymongo.mongo_client
+import pymongo
 from pymongo import MongoClient
 from networksecurity.constant import training_pipeline
 from networksecurity.logging.logger import logger
@@ -31,7 +31,7 @@ class  DataIngestion:
         try:
             database_name=self.data_ingestation_config.database_name
             collection_name=self.data_ingestation_config.collection_name
-            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL,serverSelectionTimeoutMS=5000)
             collection= self.mongo_client[database_name][collection_name]
             
             df=pd.DataFrame(list(collection.find()))

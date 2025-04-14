@@ -7,4 +7,5 @@ pymongo
 certifi
 scikit-learn
 pyaml
+mlflow
 ##git -e .
