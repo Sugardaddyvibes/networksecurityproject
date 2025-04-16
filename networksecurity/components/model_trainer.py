@@ -23,6 +23,8 @@ from sklearn.ensemble import (
 )
 import mlflow
 import mlflow.sklearn
+import dagshub
+dagshub.init(repo_owner='Sugardaddyvibes', repo_name='networksecurityproject', mlflow=True)
 class ModelTrainer:
     def __init__(self,data_transformation_artifact:DataTransformationArtifact,
                  data_model_config:ModelTranierConfig):
@@ -92,6 +94,7 @@ class ModelTrainer:
             y_true=y_train,y_pred=y_train_pred)
         
         ## track the mlflow
+
         
 
         self.track_mlflow(best_model,classification_train_metric)
